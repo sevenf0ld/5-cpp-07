@@ -24,7 +24,7 @@ int main(void)
 	iter(arr_neg, arr_size(arr_neg), decrement_by_one);
 	std::cout << std::endl;
 
-	FORMAT_TEST ("LAST CHARACTER TEST");
+	FORMAT_TEST("LAST CHARACTER TEST");
 	std::string arr_word[] = {"tarantula", "crab", "cadillac", "yard", "jungle"};
 	iter(arr_word, arr_size(arr_word), print_last_char);
 	std::cout << std::endl;

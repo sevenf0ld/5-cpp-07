@@ -26,7 +26,7 @@
 #define AC_ITALIC "\033[3m"
 
 #define FORMAT_TEST(str) std::cout << AC_BOLD << AC_ITALIC << str << AC_NORMAL << std::endl;
-#define arr_size(arr)  sizeof(arr) / sizeof(arr[0])
+#define arr_size(arr) sizeof(arr) / sizeof(arr[0])
 
 #include <iostream>
 
@@ -36,8 +36,8 @@
 // ┕ function to call on arr[n] (can be an instantiated fn_template)
 // must work with any type of array
 
-//template <typename T1, typename T2 = size_t> // hints that only the arr will be of varying type
-// size_t is commonly used for array indexing and loop counting. Programs that use other types, such as unsigned int, for array indexing may fail on, e.g. 64-bit systems when the index exceeds UINT_MAX or if it relies on 32-bit modular arithmetic. 
+// template <typename T1, typename T2 = size_t> // hints that only the arr will be of varying type
+// size_t is commonly used for array indexing and loop counting. Programs that use other types, such as unsigned int, for array indexing may fail on, e.g. 64-bit systems when the index exceeds UINT_MAX or if it relies on 32-bit modular arithmetic.
 
 template <typename T>
 void multiply_by_two(const T &arr_n)
@@ -58,7 +58,7 @@ void print_last_char(const T &arr_n)
 }
 
 template <typename T>
-void iter(const T *arr, size_t arr_len, void(*f)(const T&))
+void iter(const T *arr, size_t arr_len, void (*f)(const T &))
 {
 	for (size_t i = 0; i < arr_len; i++)
 		f(arr[i]);
