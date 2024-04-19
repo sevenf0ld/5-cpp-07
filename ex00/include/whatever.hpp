@@ -6,7 +6,7 @@
 /*   By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 08:28:31 by maiman-m          #+#    #+#             */
-/*   Updated: 2024/04/19 10:29:30 by maiman-m         ###   ########.fr       */
+/*   Updated: 2024/04/19 11:30:10 by maiman-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 #define AC_ITALIC "\033[3m"
 
 #define FORMAT_TEST(str) std::cout << AC_BOLD << AC_ITALIC << str << AC_NORMAL << std::endl;
-#define EQUAL_TEST 1
+#define EQUAL_TEST 0
 
 #include <iostream>
 
@@ -35,7 +35,7 @@
 // both arguments must support all relational operators
 // templates must be defined in the header file
 
-// swap 
+// swap
 // swap the two arguments, returns void
 template <typename T>
 void swap(T &a, T &b) // fn template definition for swap<T>

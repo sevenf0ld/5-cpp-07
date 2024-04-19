@@ -6,7 +6,7 @@
 /*   By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 08:27:08 by maiman-m          #+#    #+#             */
-/*   Updated: 2024/04/19 10:26:56 by maiman-m         ###   ########.fr       */
+/*   Updated: 2024/04/19 11:28:16 by maiman-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
  *
  * multi template types and default args can be achieved with templates
  */
+
+// global scope is nameless. an empty LHS is a request to fetch the RHS name from the global scope
 
 int main(void)
 {
@@ -58,5 +60,5 @@ int main(void)
 				  << "address of y: " << &y << std::endl
 				  << "address of min(x, y) should be equal to that of y: " << ::min(x, y) << std::endl
 				  << "address of max(y, x) should be equal to that of x: " << ::max(y, x) << std::endl;
-		}
 	}
+}
