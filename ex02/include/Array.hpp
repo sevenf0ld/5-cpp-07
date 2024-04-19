@@ -6,7 +6,7 @@
 /*   By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:42:10 by maiman-m          #+#    #+#             */
-/*   Updated: 2024/04/19 16:16:43 by maiman-m         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:02:09 by maiman-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ public:
 private:
 	size_t arr_size_;
 	T *data_;
+
+	// remove redundancy in the subscript operator overload by refactoring the logic into a private const member function
+	const T& get_index(int idx) const;
 };
 
 #include "Array.tpp"

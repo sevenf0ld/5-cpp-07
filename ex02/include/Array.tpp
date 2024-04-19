@@ -6,7 +6,7 @@
 #    By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 14:54:50 by maiman-m          #+#    #+#              #
-#    Updated: 2024/04/19 16:56:02 by maiman-m         ###   ########.fr        #
+#    Updated: 2024/04/19 17:05:52 by maiman-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,21 +119,21 @@ Array<T>::~Array()
 template <typename T>
 T &Array<T>::operator[](size_t idx)
 {
-	if (idx < 0 && idx >= arr_size_)
-		throw std::exception();
-	else
-		return (data_[idx]);
-
+	return (const_cast<T&>(get_index(idx)));
 }
 
 template <typename T>
 const T &Array<T>::operator[](size_t idx) const
 {
+	return (get_index(idx));
+}
+
+const T &Array<T>::get_index(size_t idx) const
+{
 	if (idx < 0 && idx >= arr_size_)
 		throw std::exception();
 	else
 		return (data_[idx]);
-
 }
 
 // returns the arr_size
