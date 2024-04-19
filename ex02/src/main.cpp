@@ -1,10 +1,10 @@
-#include <iostream>
-#include <cstdlib>
-
 #include <Array.hpp>
 
+#include <cstdlib>
+#include <ctime>
 #define MAX_VAL 750
-int main(int, char**)
+
+int test_subject_file(void)
 {
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
@@ -15,7 +15,6 @@ int main(int, char**)
         numbers[i] = value;
         mirror[i] = value;
     }
-    //SCOPE
     {
         Array<int> tmp = numbers;
         Array<int> test(tmp);
@@ -50,6 +49,11 @@ int main(int, char**)
     {
         numbers[i] = rand();
     }
-    delete [] mirror;//
+    delete [] mirror;
     return 0;
+}
+
+int main(void)
+{
+	test_subject_file();
 }

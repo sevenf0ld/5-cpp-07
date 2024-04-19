@@ -6,7 +6,7 @@
 /*   By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:42:10 by maiman-m          #+#    #+#             */
-/*   Updated: 2024/04/19 17:17:38 by maiman-m         ###   ########.fr       */
+/*   Updated: 2024/04/19 18:21:00 by maiman-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,13 @@
 #define AC_ITALIC "\033[3m"
 
 #define NEW_ERR(excpt_msg, err_msg ) std::cerr << AC_RED << excpt_msg << '\t' << "Failed to instantiate in " << err_msg << "." << AC_NORMAL << std::endl
+#define FORMAT_COPY_CONTROL(str) std::cout << AC_GREEN << str << AC_NORMAL << std::endl
+#define FORMAT_TEST(str) std::cout << AC_BOLD << AC_ITALIC << str << AC_NORMAL << std::endl
 
 #include <exception>
+//#include <stdexcept>
 #include <string>
+#include <iostream>
 
 template <typename T>
 class Array

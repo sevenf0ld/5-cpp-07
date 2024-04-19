@@ -17,6 +17,8 @@ Array<T>::Array()
 		NEW_ERR(e.what(), "default ctor");
 		//NEW_ERR(std::string(e.what()), "default ctor");
 	}
+	FORMAT_COPY_CONTROL("DEFAULT CTOR");
+	std::cout << "┕ size: " << arr_size_ << std::endl;
 }
 
 // parameterized ctor
@@ -34,6 +36,8 @@ Array<T>::Array(unsigned int n)
 		NEW_ERR(e.what(), "parameterized ctor");
 		//NEW_ERR(std::string(e.what()), "parameterized ctor");
 	}
+	FORMAT_COPY_CONTROL("PARAMETERIZED CTOR");
+	std::cout << "┕ size: " << arr_size_ << std::endl;
 }
 
 // copy ctor
@@ -54,6 +58,7 @@ Array<T>::Array(const Array &rhs)
 	}
 	for (size_t i = 0; i < arr_size_; i++)
 		data_[i] = rhs.data_[i];
+	FORMAT_COPY_CONTROL("COPY CTOR");
 }
 
 // assignment operator overload
@@ -83,6 +88,7 @@ T &Array<T>::operator=(const Array &rhs)
 			//NEW_ERR(std::string(e.what()), "assignment op");
 		}
 	}
+	FORMAT_COPY_CONTROL("ASSIGNMENT OP");
 	return (*this);
 }
 
@@ -95,6 +101,7 @@ Array<T>::~Array()
 		delete[] data_;
 		data_ = NULL;
 	}
+	FORMAT_COPY_CONTROL("DTOR");
 }
 
 // LHS of an assignment must be a l-value (with a valid memory addr)
@@ -125,8 +132,8 @@ const T &Array<T>::get_index(size_t idx) const
 	// error: comparison of unsigned expression in ‘< 0’ is always false [-Werror=type-limits]
 	if (idx >= arr_size_)
 		throw std::exception();
-	else
-		return (data_[idx]);
+		//throw std::out_of_range("index out of bounds");
+	return (data_[idx]);
 }
 
 // returns the arr_size
