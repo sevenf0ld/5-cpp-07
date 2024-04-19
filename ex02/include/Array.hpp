@@ -6,7 +6,7 @@
 /*   By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:42:10 by maiman-m          #+#    #+#             */
-/*   Updated: 2024/04/19 15:57:52 by maiman-m         ###   ########.fr       */
+/*   Updated: 2024/04/19 16:16:43 by maiman-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ public:
 	~Array();
 
 	T &operator[](size_t idx);
+	const T &operator[](size_t idx) const;
 	size_t size(void) const;
 
 private:

@@ -6,7 +6,7 @@
 #    By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 14:54:50 by maiman-m          #+#    #+#              #
-#    Updated: 2024/04/19 16:00:13 by maiman-m         ###   ########.fr        #
+#    Updated: 2024/04/19 16:56:02 by maiman-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,10 +107,27 @@ Array<T>::~Array()
 	}
 }
 
+// LHS of an assignment must be a l-value (with a valid memory addr)
+// the result of [] can be used on the LHS so the retval of the subscript operator must be an l-value
+// references are always l-values because only variables with memory address allows references/aliases
+// obj[i] evalues to obj.data_[i]
+// returning by reference returns the actual obj.data_[i] array element
+// if the subscript operator returns by value, it would return the value stored inside
+
 // subscript operator overload
 // throw an std::exception object if index is out of bounds
 template <typename T>
 T &Array<T>::operator[](size_t idx)
+{
+	if (idx < 0 && idx >= arr_size_)
+		throw std::exception();
+	else
+		return (data_[idx]);
+
+}
+
+template <typename T>
+const T &Array<T>::operator[](size_t idx) const
 {
 	if (idx < 0 && idx >= arr_size_)
 		throw std::exception();
