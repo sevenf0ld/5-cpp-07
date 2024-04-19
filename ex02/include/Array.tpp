@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Array.tpp                                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/19 14:54:50 by maiman-m          #+#    #+#              #
-#    Updated: 2024/04/19 17:05:52 by maiman-m         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #include "Array.hpp"
 
 // try-catch is better suited in the event of a dynamic allocation failure so as to avoid the program from proceeding after printing an error message
@@ -71,7 +59,9 @@ Array<T>::Array(const Array &rhs)
 // assignment operator overload
 // deep copy
 template <typename T>
-Array &Array<T>::operator=(const Array &rhs)
+//Array &Array<T>::operator=(const Array &rhs)
+// error: invalid use of template-name ‘Array’ without an argument list
+T &Array<T>::operator=(const Array &rhs)
 {
 	if (this != &rhs)
 	{
@@ -128,9 +118,12 @@ const T &Array<T>::operator[](size_t idx) const
 	return (get_index(idx));
 }
 
+template <typename T>
 const T &Array<T>::get_index(size_t idx) const
 {
-	if (idx < 0 && idx >= arr_size_)
+	//if (idx < 0 && idx >= arr_size_)
+	// error: comparison of unsigned expression in ‘< 0’ is always false [-Werror=type-limits]
+	if (idx >= arr_size_)
 		throw std::exception();
 	else
 		return (data_[idx]);
