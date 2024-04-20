@@ -1,4 +1,4 @@
-#include "Array.hpp"
+int flag = 0;
 
 // try-catch is better suited in the event of a dynamic allocation failure so as to avoid the program from proceeding after printing an error message
 
@@ -17,7 +17,7 @@ Array<T>::Array()
 		NEW_ERR(e.what(), "default ctor");
 		//NEW_ERR(std::string(e.what()), "default ctor");
 	}
-	FORMAT_COPY_CONTROL("DEFAULT CTOR");
+	FORMAT_COPY_CONTROL("Default ctor called.");
 	std::cout << "┕ size: " << arr_size_ << std::endl;
 }
 
@@ -30,13 +30,15 @@ Array<T>::Array(unsigned int n)
 	try
 	{
 		data_ = new T[n];
+		for (size_t i = 0; i < arr_size_; i++)
+			data_[i] = 0;
 	}
 	catch (std::bad_alloc &e)
 	{
 		NEW_ERR(e.what(), "parameterized ctor");
 		//NEW_ERR(std::string(e.what()), "parameterized ctor");
 	}
-	FORMAT_COPY_CONTROL("PARAMETERIZED CTOR");
+	FORMAT_COPY_CONTROL("Parameterized ctor called.");
 	std::cout << "┕ size: " << arr_size_ << std::endl;
 }
 
@@ -58,15 +60,13 @@ Array<T>::Array(const Array &rhs)
 	}
 	for (size_t i = 0; i < arr_size_; i++)
 		data_[i] = rhs.data_[i];
-	FORMAT_COPY_CONTROL("COPY CTOR");
+	FORMAT_COPY_CONTROL("Copy ctor called.");
 }
 
 // assignment operator overload
 // deep copy
 template <typename T>
-//Array &Array<T>::operator=(const Array &rhs)
-// error: invalid use of template-name ‘Array’ without an argument list
-T &Array<T>::operator=(const Array &rhs)
+Array <T>&Array<T>::operator=(const Array &rhs)
 {
 	if (this != &rhs)
 	{
@@ -88,7 +88,7 @@ T &Array<T>::operator=(const Array &rhs)
 			//NEW_ERR(std::string(e.what()), "assignment op");
 		}
 	}
-	FORMAT_COPY_CONTROL("ASSIGNMENT OP");
+	FORMAT_COPY_CONTROL("Assignment op called.");
 	return (*this);
 }
 
@@ -101,7 +101,7 @@ Array<T>::~Array()
 		delete[] data_;
 		data_ = NULL;
 	}
-	FORMAT_COPY_CONTROL("DTOR");
+	FORMAT_COPY_CONTROL("Dtor called.");
 }
 
 // LHS of an assignment must be a l-value (with a valid memory addr)
@@ -116,12 +116,18 @@ Array<T>::~Array()
 template <typename T>
 T &Array<T>::operator[](size_t idx)
 {
+	if (flag == 1)
+		std::cout << " [ calling non-const version ] ";
+	flag = 0;
 	return (const_cast<T&>(get_index(idx)));
 }
 
 template <typename T>
 const T &Array<T>::operator[](size_t idx) const
 {
+	if (flag == 1)
+		std::cout << " [ calling const version ] ";
+	flag = 0;
 	return (get_index(idx));
 }
 
