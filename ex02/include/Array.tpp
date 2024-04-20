@@ -131,8 +131,8 @@ const T &Array<T>::get_index(size_t idx) const
 	//if (idx < 0 && idx >= arr_size_)
 	// error: comparison of unsigned expression in ‘< 0’ is always false [-Werror=type-limits]
 	if (idx >= arr_size_)
-		throw std::exception();
-		//throw std::out_of_range("index out of bounds");
+		//throw std::exception();
+		throw std::out_of_range("index out of bounds");
 	return (data_[idx]);
 }
 

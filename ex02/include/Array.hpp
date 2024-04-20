@@ -6,7 +6,7 @@
 /*   By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:42:10 by maiman-m          #+#    #+#             */
-/*   Updated: 2024/04/19 18:21:00 by maiman-m         ###   ########.fr       */
+/*   Updated: 2024/04/20 11:45:59 by maiman-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 #define FORMAT_COPY_CONTROL(str) std::cout << AC_GREEN << str << AC_NORMAL << std::endl
 #define FORMAT_TEST(str) std::cout << AC_BOLD << AC_ITALIC << str << AC_NORMAL << std::endl
 
-#include <exception>
-//#include <stdexcept>
+//#include <exception>
+#include <stdexcept>
 #include <string>
 #include <iostream>
 
