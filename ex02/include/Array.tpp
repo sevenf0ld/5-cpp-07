@@ -15,7 +15,6 @@ Array<T>::Array()
 	catch (std::bad_alloc &e)
 	{
 		NEW_ERR(e.what(), "default ctor");
-		//NEW_ERR(std::string(e.what()), "default ctor");
 	}
 	FORMAT_COPY_CONTROL("Default ctor called.");
 	std::cout << "┕ size: " << arr_size_ << std::endl;
@@ -36,7 +35,6 @@ Array<T>::Array(unsigned int n)
 	catch (std::bad_alloc &e)
 	{
 		NEW_ERR(e.what(), "parameterized ctor");
-		//NEW_ERR(std::string(e.what()), "parameterized ctor");
 	}
 	FORMAT_COPY_CONTROL("Parameterized ctor called.");
 	std::cout << "┕ size: " << arr_size_ << std::endl;
@@ -52,14 +50,13 @@ Array<T>::Array(const Array &rhs)
 	try
 	{
 		data_ = new T[arr_size_];
+		for (size_t i = 0; i < arr_size_; i++)
+			data_[i] = rhs.data_[i];
 	}
 	catch (std::bad_alloc &e)
 	{
 		NEW_ERR(e.what(), "copy ctor");
-		//NEW_ERR(std::string(e.what()), "copy ctor");
 	}
-	for (size_t i = 0; i < arr_size_; i++)
-		data_[i] = rhs.data_[i];
 	FORMAT_COPY_CONTROL("Copy ctor called.");
 }
 
@@ -73,7 +70,7 @@ Array <T>&Array<T>::operator=(const Array &rhs)
 		arr_size_ = rhs.arr_size_;
 		if (data_ != NULL)
 		{
-			delete data_;
+			delete[] data_;
 			data_ = NULL;
 		}
 		try
@@ -85,7 +82,6 @@ Array <T>&Array<T>::operator=(const Array &rhs)
 		catch (std::bad_alloc &e)
 		{
 			NEW_ERR(e.what(), "assignment op");
-			//NEW_ERR(std::string(e.what()), "assignment op");
 		}
 	}
 	FORMAT_COPY_CONTROL("Assignment op called.");
