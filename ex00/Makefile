@@ -6,7 +6,7 @@
 #    By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 08:26:17 by maiman-m          #+#    #+#              #
-#    Updated: 2024/04/19 10:26:05 by maiman-m         ###   ########.fr        #
+#    Updated: 2024/07/27 00:03:44 by maiman-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CXXFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98 -g3 -pedantic
 
 CPPFLAGS = -I include
 
-SOURCE = main.cpp
+SOURCE = main.cpp Complex.cpp
 
 SRCS = $(addprefix src/,$(SOURCE))
 	   

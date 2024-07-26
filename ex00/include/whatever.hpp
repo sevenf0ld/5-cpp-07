@@ -6,7 +6,7 @@
 /*   By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 08:28:31 by maiman-m          #+#    #+#             */
-/*   Updated: 2024/04/19 11:30:10 by maiman-m         ###   ########.fr       */
+/*   Updated: 2024/07/27 01:04:16 by maiman-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #define AC_ITALIC "\033[3m"
 
 #define FORMAT_TEST(str) std::cout << AC_BOLD << AC_ITALIC << str << AC_NORMAL << std::endl;
+#define TEST(str) std::cout << AC_ITALIC << str << AC_NORMAL << std::endl;
 #define EQUAL_TEST 0
 
 #include <iostream>
