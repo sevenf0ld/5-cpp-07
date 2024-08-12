@@ -6,7 +6,7 @@
 /*   By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 08:28:31 by maiman-m          #+#    #+#             */
-/*   Updated: 2024/07/27 01:04:16 by maiman-m         ###   ########.fr       */
+/*   Updated: 2024/08/12 21:55:02 by maiman-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 #define EQUAL_TEST 0
 
 #include <iostream>
+#include <string>
 
 // function templates can be called with any argument type
 // both arguments must have the same type

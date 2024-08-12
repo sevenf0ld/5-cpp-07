@@ -7,17 +7,17 @@ int flag = 0;
 template <typename T>
 Array<T>::Array()
 {
-	arr_size_ = 0;
+	FORMAT_COPY_CONTROL("Default ctor called.");
 	try
 	{
+		arr_size_ = 0;
 		data_ = new T[arr_size_];
+		std::cout << "┕ size: " << arr_size_ << std::endl;
 	}
-	catch (std::bad_alloc &e)
+	catch (const std::bad_alloc &e)
 	{
 		NEW_ERR(e.what(), "default ctor");
 	}
-	FORMAT_COPY_CONTROL("Default ctor called.");
-	std::cout << "┕ size: " << arr_size_ << std::endl;
 }
 
 // parameterized ctor
@@ -25,19 +25,19 @@ Array<T>::Array()
 template <typename T>
 Array<T>::Array(unsigned int n)
 {
-	arr_size_ = static_cast<size_t>(n);
+	FORMAT_COPY_CONTROL("Parameterized ctor called.");
 	try
 	{
+		arr_size_ = static_cast<size_t>(n);
 		data_ = new T[n];
 		for (size_t i = 0; i < arr_size_; i++)
 			data_[i] = 0;
+		std::cout << "┕ size: " << arr_size_ << std::endl;
 	}
-	catch (std::bad_alloc &e)
+	catch (const std::bad_alloc &e)
 	{
 		NEW_ERR(e.what(), "parameterized ctor");
 	}
-	FORMAT_COPY_CONTROL("Parameterized ctor called.");
-	std::cout << "┕ size: " << arr_size_ << std::endl;
 }
 
 // copy ctor
@@ -45,29 +45,29 @@ Array<T>::Array(unsigned int n)
 template <typename T>
 Array<T>::Array(const Array &rhs)
 {
-	arr_size_ = rhs.arr_size_;
-	//data_ = new T(*(rhs.data_)); // not another data type
+	FORMAT_COPY_CONTROL("Copy ctor called.");
+	// data_ = new T(*(rhs.data_)); // not another data type
 	try
 	{
+		arr_size_ = rhs.arr_size_;
 		data_ = new T[arr_size_];
 		for (size_t i = 0; i < arr_size_; i++)
 			data_[i] = rhs.data_[i];
 	}
-	catch (std::bad_alloc &e)
+	catch (const std::bad_alloc &e)
 	{
 		NEW_ERR(e.what(), "copy ctor");
 	}
-	FORMAT_COPY_CONTROL("Copy ctor called.");
 }
 
 // assignment operator overload
 // deep copy
 template <typename T>
-Array <T>&Array<T>::operator=(const Array &rhs)
+Array<T> &Array<T>::operator=(const Array &rhs)
 {
+	FORMAT_COPY_CONTROL("Assignment op called.");
 	if (this != &rhs)
 	{
-		arr_size_ = rhs.arr_size_;
 		if (data_ != NULL)
 		{
 			delete[] data_;
@@ -75,16 +75,16 @@ Array <T>&Array<T>::operator=(const Array &rhs)
 		}
 		try
 		{
+			arr_size_ = rhs.arr_size_;
 			data_ = new T[arr_size_];
 			for (size_t i = 0; i < arr_size_; i++)
 				data_[i] = rhs.data_[i];
 		}
-		catch (std::bad_alloc &e)
+		catch (const std::bad_alloc &e)
 		{
 			NEW_ERR(e.what(), "assignment op");
 		}
 	}
-	FORMAT_COPY_CONTROL("Assignment op called.");
 	return (*this);
 }
 
@@ -92,12 +92,12 @@ Array <T>&Array<T>::operator=(const Array &rhs)
 template <typename T>
 Array<T>::~Array()
 {
+	FORMAT_COPY_CONTROL("Dtor called.");
 	if (data_ != NULL)
 	{
 		delete[] data_;
 		data_ = NULL;
 	}
-	FORMAT_COPY_CONTROL("Dtor called.");
 }
 
 // LHS of an assignment must be a l-value (with a valid memory addr)
@@ -115,7 +115,7 @@ T &Array<T>::operator[](size_t idx)
 	if (flag == 1)
 		std::cout << " [ calling non-const version ] ";
 	flag = 0;
-	return (const_cast<T&>(get_index(idx)));
+	return (const_cast<T &>(get_index(idx)));
 }
 
 template <typename T>
@@ -130,11 +130,11 @@ const T &Array<T>::operator[](size_t idx) const
 template <typename T>
 const T &Array<T>::get_index(size_t idx) const
 {
-	//if (idx < 0 && idx >= arr_size_)
-	// error: comparison of unsigned expression in ‘< 0’ is always false [-Werror=type-limits]
+	// if (idx < 0 && idx >= arr_size_)
+	//  error: comparison of unsigned expression in ‘< 0’ is always false [-Werror=type-limits]
 	if (idx >= arr_size_)
-		//throw std::exception();
-		throw std::out_of_range("index out of bounds");
+		// throw std::exception();
+		throw std::out_of_range(AC_RED "index out of bounds" AC_NORMAL);
 	return (data_[idx]);
 }
 

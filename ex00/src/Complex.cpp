@@ -13,22 +13,22 @@
 #include "Complex.hpp"
 
 Complex::Complex()
-	   : n_(9.0), a_('a')
+	: n_(9.0), a_('a')
 {
 }
 
 Complex::Complex(const double n)
-	   : n_(n), a_('a')
+	: n_(n), a_('a')
 {
 }
 
 Complex::Complex(const char a)
-	   : n_(9.0), a_(a)
+	: n_(9.0), a_(a)
 {
 }
 
 Complex::Complex(const Complex &rhs)
-	   : n_(rhs.n_), a_(rhs.a_)
+	: n_(rhs.n_), a_(rhs.a_)
 {
 }
 

@@ -6,7 +6,7 @@
 /*   By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:52:20 by maiman-m          #+#    #+#             */
-/*   Updated: 2024/04/19 13:48:59 by maiman-m         ###   ########.fr       */
+/*   Updated: 2024/08/12 20:00:56 by maiman-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 #define arr_size(arr) sizeof(arr) / sizeof(arr[0])
 
 #include <iostream>
+#include <string>
 
 // takes in 3 parameters and returns void
 // ┕ arr_addr

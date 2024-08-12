@@ -66,15 +66,19 @@ int main(void)
 		Complex large('z');
 
 		TEST("SMALL & LARGE BEFORE SWAP")
-		std::cout << "small:" << std::endl << small;
-		std::cout << "large:" << std::endl << large;
+		std::cout << "small:" << std::endl
+				  << small;
+		std::cout << "large:" << std::endl
+				  << large;
 		std::cout << std::endl;
 
 		::swap(small, large);
-		
+
 		TEST("SMALL & LARGE AFTER SWAP")
-		std::cout << "small:" << std::endl << small;
-		std::cout << "large:" << std::endl << large;
+		std::cout << "small:" << std::endl
+				  << small;
+		std::cout << "large:" << std::endl
+				  << large;
 		std::cout << std::endl;
 
 		TEST("SMALL vs LARGE MIN")

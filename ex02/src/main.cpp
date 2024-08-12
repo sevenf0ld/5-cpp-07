@@ -6,7 +6,7 @@
 /*   By: maiman-m <maiman-m@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 12:34:06 by maiman-m          #+#    #+#             */
-/*   Updated: 2024/04/21 13:04:54 by maiman-m         ###   ########.fr       */
+/*   Updated: 2024/08/13 00:22:45 by maiman-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void test_default(void)
 		std::cout << "accessing element at index " << 0 << " gives the value "
 				  << def[0] << std::endl;
 	}
-	catch (std::out_of_range &e)
+	catch (const std::out_of_range &e)
 	{
 		ACCESS_ERR(e.what());
 	}
@@ -120,7 +120,7 @@ void test_param(Array<double> const &obj)
 		std::cout << "accessing element at index " << ARR_SIZE << " gives the value "
 				  << obj[ARR_SIZE] << std::endl;
 	}
-	catch (std::out_of_range &e)
+	catch (const std::out_of_range &e)
 	{
 		ACCESS_ERR(e.what());
 	}
@@ -194,6 +194,8 @@ void test_ctor(void)
 	flag = 0;
 	test_default();
 	std::cout << std::endl;
+
+	FORMAT_TEST("USE PARAMETERIZED CONSTRUCTOR TO RUN TESTS");
 
 	Array<double> param(ARR_SIZE);
 	std::cout << std::endl;
